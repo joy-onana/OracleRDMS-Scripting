@@ -1,0 +1,8 @@
+select source_name,dest_name,narration,
+count(amount) kount,amount
+from *******
+and trunc(request_time) > '01jan2021'
+group by source_name,dest_name,narration,amount
+having count (*) = (select count(to_char(trunc(request_time), 'YYYY/MM'))
+from ******
+where to_char(trunc(request_time), 'YYYY/MM' between '01jan2021' and sysdate)
