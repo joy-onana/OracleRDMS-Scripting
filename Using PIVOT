@@ -1,0 +1,10 @@
+select * from
+(select cust_ac_no,cust_no,ac_desc,account_class,ac_stat_dormant,dat_process, BAL_AVAILABLE_LCY
+from **********
+where cod_act_no = cust_ac_no
+and acy_avl_bal >= '500000'
+and dat_process in ('31mar2021','29apr2021'))
+pivot 
+(sum(BAL_AVAILABLE_LCY)
+for dat_process in ('31mar2021' as "March_",'29apr2021' as "April"))
+order by cust_ac_no
