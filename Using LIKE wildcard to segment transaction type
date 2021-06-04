@@ -1,0 +1,14 @@
+select source_name,dest_name,dest_account,
+case when source_name like '% LTD' 
+or source_name like '% LIMITED' 
+or source_name like '% COMPANY' then 'C' else 'I' end source_type,
+description,count(distinct(trunc(request_time))) time_,
+count(amount) kounts,amount
+from ********
+where narration like '%PAYROLL%'
+and amount >='20000'
+group by source_name,dest_name,amount,dest_account,
+description,
+case when source_name like '% LTD' 
+or source_name like '% LIMITED' 
+or source_name like '% COMPANY' then 'C' else 'I' end
