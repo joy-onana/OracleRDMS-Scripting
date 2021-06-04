@@ -1,0 +1,11 @@
+SELECT NEXT_DAY(trunc(request_time),'Thursday') "NEXT_WEEK", 
+Source_account,source_name,dest_account, dest_name,
+sum(amount) Volume, 
+COUNT(dest_account) Kount,
+e.branch_code, team_code,teamname,REGIONNAME,GROUPNAME,DIVISIONNAME
+from *********
+where TRUNC(request_time) BETWEEN '01OCT2020' AND SYSDATE
+group by NEXT_DAY(trunc(request_time),'Thursday'),
+Source_account, source_name,dest_account, dest_name,
+e.branch_code, team_code,teamname,REGIONNAME,GROUPNAME,DIVISIONNAME
+ORDER BY NEXT_DAY(trunc(request_time),'Thursday') ASC
